@@ -1,0 +1,50 @@
+﻿@model model_validation.Models.CustomerMetadata
+
+@{
+    ViewBag.Title = "RegisterCustomerMetadata";
+}
+
+<style type="text/css">
+    .field-validation-error {
+        color: #f00;
+    }
+
+    .validation-summary-error {
+        color: #f00;
+        font-weight: bold;
+    }
+
+    .input-validation-error {
+        border: 2px solid #f00;
+        background-color: #fee;
+    }
+
+    input[type="checkbox"].input-validation-error {
+        outline: 2px solid #f00;
+    }
+</style>
+
+<h2>RegisterCustomerMetadata</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+
+    @Html.ValidationSummary(true, "Model Level Validations")
+
+    <p>@Html.ValidationMessageFor(x => x.FirstName)</p>
+    <p>First Name: @Html.EditorFor(m => m.FirstName)</p>
+    <p>@Html.ValidationMessageFor(x => x.LastName)</p>
+    <p>Last Name: @Html.EditorFor(m => m.LastName)</p>
+    <p>@Html.ValidationMessageFor(x => x.Birthday)</p>
+    <p>Customer BirthDay: @Html.EditorFor(m => m.Birthday)</p>
+    <p>@Html.ValidationMessageFor(x => x.TermsAccepted)</p>
+    <p>Term Accept: @Html.EditorFor(m => m.TermsAccepted)</p>
+    <input type="submit" value="Register Explicit" />
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/customvalidations.js")
+}

@@ -1,0 +1,44 @@
+﻿@model model_validation.Models.CustomerExplicit
+
+@{
+    ViewBag.Title = "RegisterCustomerExplicit";
+}
+
+<style type="text/css">
+    .field-validation-error {
+        color: #f00;
+    }
+
+    .validation-summary-error {
+        color: #f00;
+        font-weight: bold;
+    }
+
+    .input-validation-error {
+        border: 2px solid #f00;
+        background-color: #fee;
+    }
+
+    input[type="checkbox"].input-validation-error {
+        outline: 2px solid #f00;
+    }
+</style>
+
+<h2>RegisterCustomerExplicit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+
+    @Html.ValidationSummary(true, "Model Level Validations")
+
+    <p>@Html.ValidationMessageFor(x => x.Name)</p>
+    <p>Customer Name: @Html.EditorFor(m => m.Name)</p>
+    <p>@Html.ValidationMessageFor(x => x.Birthday)</p>
+    <p>Customer BirthDay: @Html.EditorFor(m => m.Birthday)</p>
+    <p>@Html.ValidationMessageFor(x => x.TermsAccepted)</p>
+    <p>Term Accept: @Html.EditorFor(m => m.TermsAccepted)</p>
+    <input type="submit" value="Register Explicit" />
+}
+
